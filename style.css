@@ -15,3 +15,8 @@ h1 {
     font-size: 6rem;
     margin: 2rem 0;
 }
+
+#sketch-container {
+    display: flex;
+    justify-content: center;
+}
