@@ -16,8 +16,6 @@ let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
 
-
-
 createGrid();
 
 addEventListener('mousedown', updateElement);
@@ -27,8 +25,8 @@ create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
-
     if (event.type === 'mouseover' && !mouseDown) return
+
     if (event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
         //prevents dragging
@@ -36,8 +34,6 @@ function updateElement(event) {
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
     }
-
-    
 }
 
 function clearGrid() {
