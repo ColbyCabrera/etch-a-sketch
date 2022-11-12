@@ -3,6 +3,9 @@ const gridSize = 64;
 const gridContainer = document.createElement("div");
 const clearButton = document.getElementsByClassName("clear")[0];
 const create = document.getElementsByClassName("create")[0];
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 document.getElementById("sketch-container").appendChild(gridContainer);
 gridContainer.style.height = gridSize + "rem";
@@ -13,16 +16,19 @@ gridContainer.className = "grid-container";
 
 createGrid();
 
-addEventListener('click', updateElement);
+addEventListener('mousedown', updateElement);
 addEventListener('mouseover', updateElement);
 clearButton.addEventListener('click', clearGrid);
 create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
-    if (event.target.classList.contains("grid-element") && (event.buttons == 1)) {
+    event.preventDefault();
+
+    if (event.type === 'mouseover' && !mouseDown) return
+    if (event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
-        event.preventDefault()
+        
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
     }
