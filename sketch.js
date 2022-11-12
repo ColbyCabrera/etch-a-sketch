@@ -32,7 +32,7 @@ function updateElement(event) {
     if (event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
         //prevents dragging
-    event.preventDefault();
+        event.preventDefault();
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
     }
