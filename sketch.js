@@ -13,14 +13,14 @@ gridContainer.className = "grid-container";
 
 createGrid();
 
-addEventListener('click', updateElement);
+addEventListener('mousedown', updateElement);
 addEventListener('mouseover', updateElement);
 clearButton.addEventListener('click', clearGrid);
 create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
-    if (event.target.classList.contains("grid-element") && event.buttons == 1) {
+    if (event.target.classList.contains("grid-element") && e.type == mousedown) {
         event.target.style.backgroundColor = "white";
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
