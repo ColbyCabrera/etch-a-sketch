@@ -23,6 +23,7 @@ create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
+    //prevents dragging
     event.preventDefault();
 
     if (event.type === 'mouseover' && !mouseDown) return
