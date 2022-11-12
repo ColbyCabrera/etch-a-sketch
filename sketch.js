@@ -1,18 +1,22 @@
 //grid size in rems where 1 rem = 10px
 const gridSize = 64;
-const gridContainer = document.createElement("div");
-const clearButton = document.getElementsByClassName("clear")[0];
-const create = document.getElementsByClassName("create")[0];
-let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
 
+const gridContainer = document.createElement("div");
 document.getElementById("sketch-container").appendChild(gridContainer);
 gridContainer.style.height = gridSize + "rem";
 gridContainer.style.width = gridSize + "rem";
 gridContainer.style.minHeight = gridSize + "rem";
 gridContainer.style.minWidth = gridSize + "rem";
 gridContainer.className = "grid-container";
+
+const clearButton = document.getElementsByClassName("clear")[0];
+const create = document.getElementsByClassName("create")[0];
+let mouseDown = false;
+
+document.body.onmousedown = () => mouseDown = true;
+document.body.onmouseup = () => mouseDown = false;
+
+
 
 createGrid();
 
@@ -23,16 +27,17 @@ create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
-    //prevents dragging
-    event.preventDefault();
 
     if (event.type === 'mouseover' && !mouseDown) return
     if (event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
-        
+        //prevents dragging
+    event.preventDefault();
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
     }
+
+    
 }
 
 function clearGrid() {
@@ -44,9 +49,7 @@ function clearGrid() {
 }
 
 function deleteGrid() {
-
     gridContainer.innerHTML = "";
-
 }
 
 function createGrid() {
