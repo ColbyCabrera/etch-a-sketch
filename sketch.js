@@ -13,15 +13,16 @@ gridContainer.className = "grid-container";
 
 createGrid();
 
-addEventListener('mousedown', updateElement);
+addEventListener('click', updateElement);
 addEventListener('mouseover', updateElement);
 clearButton.addEventListener('click', clearGrid);
 create.addEventListener('click', createGrid);
 
 function updateElement(event) {
 
-    if (event.target.classList.contains("grid-element") && e.type == mousedown) {
+    if (event.target.classList.contains("grid-element") && (event.buttons == 1)) {
         event.target.style.backgroundColor = "white";
+        event.preventDefault()
     } else if (event.type == "click" && event.target.classList.contains("grid-element")) {
         event.target.style.backgroundColor = "white";
     }
@@ -36,13 +37,9 @@ function clearGrid() {
 }
 
 function deleteGrid() {
-    
-    let child = gridContainer.firstElementChild;
-    console.log(child);
-    while(child) {
-        gridContainer.removeChild(child);
-        child = gridContainer.firstElementChild;
-    }
+
+    gridContainer.innerHTML = "";
+
 }
 
 function createGrid() {
